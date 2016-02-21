@@ -1,0 +1,38 @@
+Killaura:
+
+if(isEnabled()){ //or other toggle
+		for(Object o: mc.theWorld.loadedEntityList){
+			if(o instanceof EntityPlayer){
+				EntityPlayer ep = (EntityPlayer)o;
+				if(!(ep instanceof EntityPlayerSP) && !ep.isDead && ep.canEntityBeSeen(mc.thePlayer) && mc.thePlayer.getDistanceToEntity(ep) <+ 5){
+					mc.thePlayer.setSprinting(false);
+					mc.thePlayer.swingItem();
+					mc.playerController.attackEntity(mc.thePlayer, ep);
+				}
+			}
+		}
+	}
+	}
+	
+Crits:
+	
+	if(isEnabled()) //or other toggle
+		{
+			if(mc.thePlayer.onGround){
+			    mc.thePlayer.onGround = false;
+			    mc.thePlayer.motionY = 0.1000000014901161D;
+			    mc.thePlayer.onGround = true;
+			}
+		}
+
+Anti-Knockback:
+
+		if(isEnabled()) //or other toggle
+		{
+			if(mc.thePlayer.hurtTime > 0)
+			{
+				mc.thePlayer.motionX = 0;
+				mc.thePlayer.motionY = 0;
+				mc.thePlayer.motionZ = 0;
+			}
+		}
